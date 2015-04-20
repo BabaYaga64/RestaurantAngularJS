@@ -13,12 +13,13 @@
         <div class="container" ng-controller="RestaurantsCtrl">
             <div class="row" ng-show="restaurants.length">
                 <div class="col-md-12">
-                    <h4>Search Students<h4>
+                    <h4>Search Restaurants<h4>
                         <form class="form-inline" role="form">
                             <div class="form-group">
                                 <input ng-model="query" type="text" class="form-control" id="restaurant-name" placeholder="Search">
                             </div>
                         </form>
+
                 </div>
             </div>
             <!-- Displays a list of restaurants-->
@@ -50,6 +51,18 @@
                     <form ng-submit="addRestaurant()" class="form-inline" role="form">
                         <div class="form-group">
                             <input type="text" ng-model="restaurantName" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="cuisine">Cuisine</label>
+                            <input type="text" ng-model="restaurantCuisine" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input type="text" ng-model="restaurantLocation" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Price</label>
+                            <input type="text" ng-model="restaurantPrice" class="form-control">
                         </div>
                         <button name="submit" class="btn btn-primary">Submit</button>
                     </form>
