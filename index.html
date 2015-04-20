@@ -11,19 +11,31 @@
     </head>
     <body>
         <div class="container" ng-controller="RestaurantsCtrl">
+            <div class="row" ng-show="restaurants.length">
+                <div class="col-md-12">
+                    <h4>Search Students<h4>
+                        <form class="form-inline" role="form">
+                            <div class="form-group">
+                                <input ng-model="query" type="text" class="form-control" id="restaurant-name" placeholder="Search">
+                            </div>
+                        </form>
+                </div>
+            </div>
             <!-- Displays a list of restaurants-->
             <div class="row">
                 <div class="col-md-12">
-                    <h2>Restaurant List</h2>
+                    <h2 ng-show="restaurants.length && filtered.length">Restaurant List</h2>
+                    <h2 ng-show="restaurants.length && !filtered.length">No Matches</h2>
+
                     <ul>
-                        <li ng-repeat="item in restaurants">
+                        <li ng-repeat="item in filtered = (restaurants | filter: query)">
                             <!-- Edits a restaurant -->
                             <span ng-click="editing = true" ng-hide="editing">
                             {{ item.name }} <a ng-click="deleteRestaurant(item)">Delete</a>
                             </span>
                             <span class="form-group" ng-show="editing" ng-submit="editing = false">
                                 <form class="form-inline" role="form">
-                                    <input type="text" class="form-control input-sm" ng-model="item.name" placeholder="Name" required>
+                                    <input type="text" class="form-control input-sm" ng-model="item.name" placeholder="Name" required/>
                                     <button name="btn btn-default btn-sm" type="submit">Save</button>
                                 </form>
                             </span>
