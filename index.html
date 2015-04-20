@@ -1,4 +1,5 @@
-<html>
+<!doctype html>
+<html lang="en" ng-app="restaurantList">
     <head>
         <meta charset="UTF-8">
         <title>Student App</title>
@@ -9,6 +10,30 @@
         <title>Best Restaurants in Town</title>
     </head>
     <body>
-
+        <div class="container" ng-controller="RestaurantsCtrl">
+            <!-- Displays a list of restaurants-->
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Restaurant List</h2>
+                    <ul>
+                        <li ng-repeat="item in restaurants">
+                            {{item.name}}
+                        </li>
+                    </ul>
+               </div>
+            </div>
+            <div class="row">
+                <!-- Adds a restaurant -->
+                <div class="col-md-4">
+                    <h2>New Restaurant</h2>
+                    <form ng-submit="addRestaurant()" class="form-inline" role="form">
+                        <div class="form-group">
+                            <input type="text" ng-model="restaurantName" class="form-control">
+                        </div>
+                        <button name="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
