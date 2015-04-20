@@ -17,13 +17,22 @@
                     <h2>Restaurant List</h2>
                     <ul>
                         <li ng-repeat="item in restaurants">
+                            <!-- Edits a restaurant -->
+                            <span ng-click="editing = true" ng-hide="editing">
                             {{ item.name }} <a ng-click="deleteRestaurant(item)">Delete</a>
+                            </span>
+                            <span class="form-group" ng-show="editing" ng-submit="editing = false">
+                                <form class="form-inline" role="form">
+                                    <input type="text" class="form-control input-sm" ng-model="item.name" placeholder="Name" required>
+                                    <button name="btn btn-default btn-sm" type="submit">Save</button>
+                                </form>
+                            </span>
                         </li>
                     </ul>
                </div>
-            </div>
+           </div>
+            <!-- Adds a restaurant -->
             <div class="row">
-                <!-- Adds a restaurant -->
                 <div class="col-md-4">
                     <h2>New Restaurant</h2>
                     <form ng-submit="addRestaurant()" class="form-inline" role="form">
